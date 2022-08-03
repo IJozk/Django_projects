@@ -1,0 +1,42 @@
+<html>
+    <title>Primera plantilla.</title>
+    <body>
+
+        {% include "superior/barra_nav.html" %}
+
+        <h2 style="color: red">
+        Hola alumnos esta es nuestra primera p&aacute;gina con Django
+        </h2>
+
+        {% comment %} 
+        No temas diseñador!
+        Ignora la siquiente parte
+        {% endcomment %}
+
+        {% if nombre_persona == "Jorgenitales" %}
+
+        <p>El curso lo imparte el profesor titular.</p>
+
+        {% else %}
+
+        <p>El curso lo imparte el profesor suplente.</p>
+
+        {% endif %}
+
+        <p>El nombre del profesor es: {{nombre_persona|upper}} {{apellido_persona|upper}} con fecha {{dia}} de {{mes}} del {{agno}}. </p>
+        <p><strong>Temas que veremos en el curso:</strong></p>
+        <p>
+            <ul>
+            {% if temas %}
+                {% for el_tema in temas %}
+
+                    <li>{{el_tema|first|lower}}</li>
+
+                {% endfor %}
+            {% else %}
+                <p>No hay temas para mostrar.</p>
+            {% endif %}
+            </ul>
+        </p>
+    </body>
+</html>
